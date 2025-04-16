@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #4c794d;
+        }
+        form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4c794d;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #3a5f3d;
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal.show {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+        .modal h2 {
+            color: #4c794d;
+        }
+        .modal button {
+            margin-top: 20px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.show {
+            display: block;
+            opacity: 1;
+        }
+        .copy-feedback {
+            display: none;
+            color: green;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function setOrderDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productName = urlParams.get('product') || 'Product';
+            const size = urlParams.get('size') || 'N/A';
+            const quantity = urlParams.get('quantity') || '1';
+            const pricePerUnit = 150; // Example price per unit
+
+            // Calculate total amount
+            const totalAmount = pricePerUnit * quantity;
+
+            // Display order details
+            document.getElementById('product-name').textContent = productName;
+            document.getElementById('product-size').textContent = size;
+            document.getElementById('product-quantity').textContent = quantity;
+            document.getElementById('product-total').textContent = `GHS ${totalAmount.toFixed(2)}`;
+
+            // Set hidden input values for form submission
+            document.getElementById('product').value = productName;
+            document.getElementById('size').value = size;
+            document.getElementById('quantity').value = quantity;
+            document.getElementById('total').value = totalAmount.toFixed(2);
+        }
+
+        function showPaymentInfo() {
+            const modal = document.getElementById('payment-modal');
+            const overlay = document.getElementById('overlay');
+            modal.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        function closePaymentInfo() {
+            const modal = document.getElementById('payment-modal');
+            const overlay = document.getElementById('overlay');
+            modal.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+        function copyToClipboard() {
+            const paymentNumber = document.getElementById('payment-number').textContent;
+            navigator.clipboard.writeText(paymentNumber).then(() => {
+                const feedback = document.getElementById('copy-feedback');
+                feedback.style.display = 'block';
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 2000);
+            });
+        }
+
+        window.onload = setOrderDetails;
+    </script>
+</head>
+<body>
+    <h1>Place Your Order</h1>
+    <p>You're ordering: <strong id="product-name"></strong></p>
+    <p>Size: <strong id="product-size"></strong></p>
+    <p>Quantity: <strong id="product-quantity"></strong></p>
+    <p>Total Amount: <strong id="product-total"></strong></p>
+
+    <form action="submit-order.php" method="post">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+        <label for="contact">Contact:</label>
+        <input type="text" id="contact" name="contact" placeholder="Enter your contact" required>
+
+        <label for="mobile-money-number">Mobile Money Number:</label>
+        <input type="text" id="mobile-money-number" name="mobile-money-number" placeholder="Enter your Mobile Money number" required>
+
+        <!-- Hidden inputs to pass product details to the backend -->
+        <input type="hidden" id="product" name="product">
+        <input type="hidden" id="size" name="size">
+        <input type="hidden" id="quantity" name="quantity">
+        <input type="hidden" id="total" name="total">
+
+        <button type="submit">Submit Order</button>
+    </form>
+
+    <!-- Payment Button -->
+    <button onclick="showPaymentInfo()" style="padding:10px 20px;font-size:16px;">Show Payment Details</button>
+
+    <!-- Modal for Payment Information -->
+    <div id="payment-modal" class="modal">
+        <h2>Payment Details</h2>
+        <p>Send payment to Mobile Money Number: <strong id="payment-number">0540421082</strong></p>
+        <button onclick="copyToClipboard()">Copy Number</button>
+        <p id="copy-feedback" class="copy-feedback">Number copied to clipboard!</p>
+        <button onclick="closePaymentInfo()">Close</button>
+    </div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay" onclick="closePaymentInfo()"></div>
+
+    <!-- Back Button -->
+    <div>
+        <button onclick="window.history.back()" style="padding:10px 20px;font-size:16px;margin-top:20px;">Go Back</button>
+    </div>
+</body>
+</html>

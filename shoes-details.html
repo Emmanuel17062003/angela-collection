@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoes Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4c794d;
+        }
+        .product-section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            height: auto;
+        }
+        button {
+            background-color: #4c794d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #3a5f3d;
+        }
+        select, input[type="number"] {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .left-indent {
+            margin-left: 20px; /* Add left indentation */
+        }
+    </style>
+    <script>
+        function placeOrder(product, sizeId, quantityId) {
+            const size = document.getElementById(sizeId).value;
+            const quantity = document.getElementById(quantityId).value;
+            window.location.href = `order.html?product=${product}&size=${size}&quantity=${quantity}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Shoes Details</h1>
+    <p>This is the page for the shoes. Here you can add more details about the shoes.</p>
+
+    <!-- Shoes 1 Section -->
+    <div class="product-section">
+        <img src="images/shoes1.jpg" alt="Shoes 1">
+        <p><strong>Price:</strong> GHS 450.00</p>
+        <p><strong>Material:</strong> Leather</p>
+        <p><strong>Care Instructions:</strong> Wipe clean with a damp cloth.</p>
+        <label for="size1"><strong>Select Size:</strong></label>
+        <select id="size1" name="size1">
+            <option value="37">37</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+        </select>
+        <label for="quantity1"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity1" name="quantity1" min="1" max="10" value="1">
+        <button onclick="placeOrder('Shoes 1', 'size1', 'quantity1')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Shoes 2 Section -->
+    <div class="product-section">
+        <img src="images/shoes2.jpg" alt="Shoes 2">
+        <p><strong>Price:</strong> GHS 650.00</p>
+        <p><strong>Material:</strong> Leather</p>
+        <p><strong>Care Instructions:</strong> Wipe clean with a damp cloth.</p>
+        <label for="size2"><strong>Select Size:</strong></label>
+        <select id="size2" name="size2">
+            <option value="37">37</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+        </select>
+        <label for="quantity2"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity2" name="quantity2" min="1" max="10" value="1">
+        <button onclick="placeOrder('Shoes 2', 'size2', 'quantity2')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+
+    <!-- Shoes 3 Section -->
+    <div class="product-section left-indent">
+        <img src="images/shoes3.jpg" alt="Shoes 3">
+        <p><strong>Price:</strong> GHS 150.00</p>
+        <p><strong>Material:</strong> Leather</p>
+        <p><strong>Care Instructions:</strong> Wipe clean with a damp cloth.</p>
+        <label for="size3"><strong>Select Size:</strong></label>
+        <select id="size3" name="size3">
+            <option value="37">37</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+        </select>
+        <label for="quantity3"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity3" name="quantity3" min="1" max="10" value="1">
+        <button onclick="placeOrder('Shoes 3', 'size3', 'quantity3')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Shoes 4 Section -->
+    <div class="product-section left-indent">
+        <img src="images/shoes4.jpg" alt="Shoes 4">
+        <p><strong>Price:</strong> GHS 250.00</p>
+        <p><strong>Material:</strong> Leather</p>
+        <p><strong>Care Instructions:</strong> Wipe clean with a damp cloth.</p>
+        <label for="size4"><strong>Select Size:</strong></label>
+        <select id="size4" name="size4">
+            <option value="37">37</option>
+            <option value="39">39</option>
+            <option value="40">40</option>
+            <option value="41">41</option>
+            <option value="42">42</option>
+            <option value="43">43</option>
+            <option value="44">44</option>
+            <option value="45">45</option>
+        </select>
+        <label for="quantity4"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity4" name="quantity4" min="1" max="10" value="1">
+        <button onclick="placeOrder('Shoes 4', 'size4', 'quantity4')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Back Button -->
+    <div>
+        <button onclick="window.location.href='newpage.html'" style="margin-top:20px;padding:10px 20px;font-size:16px;">Back to Collection</button>
+    </div>
+</body>
+</html>

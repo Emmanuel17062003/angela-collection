@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pants Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #4c794d;
+        }
+        .product-section {
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            height: auto;
+        }
+        button {
+            background-color: #4c794d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #3a5f3d;
+        }
+        select, input[type="number"] {
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <script>
+        function placeOrder(product, sizeId, quantityId) {
+            const size = document.getElementById(sizeId).value;
+            const quantity = document.getElementById(quantityId).value;
+            window.location.href = `order.html?product=${product}&size=${size}&quantity=${quantity}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Pants Details</h1>
+    <p>This is the page for the pants. Here you can add more details about the pants.</p>
+
+    <!-- Pants 1 Section -->
+    <div class="product-section">
+        <img src="images/pants1.jpg" alt="Pants 1">
+        <p><strong>Price:</strong> GHS 40.00</p>
+        <p><strong>Material:</strong> Denim</p>
+        <p><strong>Care Instructions:</strong> Machine wash cold, tumble dry low.</p>
+        <label for="size1"><strong>Select Size:</strong></label>
+        <select id="size1" name="size1">
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+        </select>
+        <label for="quantity1"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity1" name="quantity1" min="1" max="10" value="1">
+        <button onclick="placeOrder('Pants 1', 'size1', 'quantity1')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Pants 2 Section -->
+    <div class="product-section">
+        <img src="images/pants2.jpg" alt="Pants 2">
+        <p><strong>Price:</strong> GHS 70.00</p>
+        <p><strong>Material:</strong> Cotton Blend</p>
+        <p><strong>Care Instructions:</strong> Machine wash cold, tumble dry low.</p>
+        <label for="size2"><strong>Select Size:</strong></label>
+        <select id="size2" name="size2">
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+        </select>
+        <label for="quantity2"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity2" name="quantity2" min="1" max="10" value="1">
+        <button onclick="placeOrder('Pants 2', 'size2', 'quantity2')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Pants 3 Section -->
+    <div class="product-section">
+        <img src="images/pants3.jpg" alt="Pants 3">
+        <p><strong>Price:</strong> GHS 50.00</p>
+        <p><strong>Material:</strong> Stretch Fabric</p>
+        <p><strong>Care Instructions:</strong> Machine wash cold, tumble dry low.</p>
+        <label for="size3"><strong>Select Size:</strong></label>
+        <select id="size3" name="size3">
+            <option value="28">28</option>
+            <option value="30">30</option>
+            <option value="32">32</option>
+            <option value="34">34</option>
+            <option value="36">36</option>
+        </select>
+        <label for="quantity3"><strong>Select Quantity:</strong></label>
+        <input type="number" id="quantity3" name="quantity3" min="1" max="10" value="1">
+        <button onclick="placeOrder('Pants 3', 'size3', 'quantity3')" style="margin-top:20px;padding:10px 20px;font-size:16px;">Place an Order</button>
+    </div>
+
+    <!-- Back Button -->
+    <div>
+        <button onclick="window.location.href='newpage.html'" style="margin-top:20px;padding:10px 20px;font-size:16px;">Back to Collection</button>
+    </div>
+</body>
+</html>

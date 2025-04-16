@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Angela's Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #4c794d;
+            color: white;
+            padding: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4c794d;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3a5f3d;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Angela's Collection</h1>
+    </header>
+    <div class="container">
+        <p>Discover the best collection of shirts, dresses, pants, shoes, and jackets!</p>
+        <p>We are dedicated to serving our customers with the highest quality products and exceptional service.</p>
+        <button id="myButton">Explore Our Collection</button>
+    </div>
+    <script>
+        document.getElementById('myButton').addEventListener('click', function() {
+            console.log('Button clicked! Redirecting to newpage.html...');
+            window.location.href = 'newpage.html';
+        });
+    </script>
+</body>
+</html>
